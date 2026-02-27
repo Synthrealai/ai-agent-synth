@@ -1,7 +1,8 @@
 enabled: true
-tick_seconds: 180
-max_open_tasks: 5
-max_tasks_seed_per_tick: 1
+tick_seconds: 90
+max_open_tasks: 12
+max_tasks_seed_per_tick: 3
+max_tasks_run_per_tick: 3
 roles:
   - name: Scout
     objective: "Find one concrete demand signal and turn it into an execution-ready opportunity."

@@ -5,6 +5,22 @@ import type { ToolDefinition } from './index.js';
 
 const HOME_DIR = process.env.HOME || '';
 const WORKSPACE_ROOT = process.env.FORGE_WORKSPACE_ROOT || process.cwd();
+const LEGACY_WORKSPACE_ROOTS = [
+  '/workspace',
+  '/app',
+  '/project',
+  '/Users/nick/Desktop/feb27Synthrella',
+].filter(Boolean);
+
+function remapLegacyWorkspacePath(inputPath: string): string {
+  for (const prefix of LEGACY_WORKSPACE_ROOTS) {
+    if (inputPath === prefix || inputPath.startsWith(`${prefix}/`)) {
+      const suffix = inputPath.slice(prefix.length).replace(/^\/+/, '');
+      return suffix ? resolve(WORKSPACE_ROOT, suffix) : resolve(WORKSPACE_ROOT);
+    }
+  }
+  return inputPath;
+}
 
 function normalizePath(inputPath: string): string {
   let candidate = String(inputPath || '').trim();
@@ -23,6 +39,8 @@ function normalizePath(inputPath: string): string {
       candidate = `${HOME_DIR}${homeUserMatch[2] || ''}`;
     }
   }
+
+  candidate = remapLegacyWorkspacePath(candidate);
 
   if (!candidate.startsWith('/')) {
     candidate = resolve(WORKSPACE_ROOT, candidate);
