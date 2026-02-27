@@ -1,0 +1,22 @@
+node_modules
+dist
+build
+.next
+.turbo
+.DS_Store
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+
+# Runtime state and generated outputs
+data/
+memory/daily/
+output/
+logs/
+*.log
+*.sqlite
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,6 @@
+name: Realtor
+description: Listing workflow and buyer follow-ups
+default_skills:
+  - lead-tracker
+  - daily-briefing
+micro_win_message: "In the next 60 seconds: add one buyer lead, one listing action, and one follow-up message draft to create immediate pipeline control."

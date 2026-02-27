@@ -1,0 +1,6 @@
+name: Local Contractor
+description: Job tracking and estimate follow-up
+default_skills:
+  - lead-tracker
+  - safe-notes
+micro_win_message: "In the next 60 seconds: log one open estimate, one pending callback, and one scheduled job so your day has immediate clarity."

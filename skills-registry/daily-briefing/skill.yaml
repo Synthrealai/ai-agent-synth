@@ -1,0 +1,9 @@
+name: daily-briefing
+description: Build daily briefings from timeline and tasks
+triggers:
+  - briefing
+  - morning
+tools_allowed:
+  - human
+  - filesystem
+risk_profile: low

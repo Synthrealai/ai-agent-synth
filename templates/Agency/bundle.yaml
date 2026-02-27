@@ -1,0 +1,23 @@
+name: Agency
+description: "AI automation agency template. Client acquisition, service delivery, operations."
+skills:
+  - content-engine
+  - social-poster
+  - business-ops
+  - web-researcher
+  - daily-briefing
+
+first_run_message: |
+  ⚡ FORGE is online — Agency Mode activated.
+
+  In the next 60 seconds, I'm going to:
+  1. Set up your client pipeline tracker
+  2. Generate 5 outreach message templates
+  3. Create your weekly ops dashboard
+
+  Your agency OS is live. Ready to acquire your first client?
+
+default_config:
+  focus: "client acquisition + service delivery"
+  revenue_tracking: true
+  lead_gen: true

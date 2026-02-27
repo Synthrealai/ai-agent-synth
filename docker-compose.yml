@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  forge:
+    build: .
+    container_name: forgeclaw
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - forge-data:/app/data
+      - ./configs:/app/configs:ro
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - forge-net
+    healthcheck:
+      test: ["CMD", "node", "-e", "process.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  forge-data:
+
+networks:
+  forge-net:
+    driver: bridge

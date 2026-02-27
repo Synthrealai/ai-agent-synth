@@ -1,0 +1,9 @@
+name: lead-tracker
+description: Track leads and follow-up cadence
+triggers:
+  - leads
+  - pipeline
+tools_allowed:
+  - filesystem
+  - human
+risk_profile: medium

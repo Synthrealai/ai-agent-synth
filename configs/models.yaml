@@ -1,0 +1,5 @@
+default_model: anthropic/claude-sonnet-4-20250514
+reasoning_model: anthropic/claude-opus-4-0-20250115
+fast_model: groq/llama-3.3-70b-versatile
+coding_model: anthropic/claude-sonnet-4-20250514
+max_cost_per_day: 25.00

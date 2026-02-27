@@ -1,0 +1,17 @@
+name: content-engine
+version: "1.0.0"
+description: "Dan Koe atomic content multiplication system. Transforms one input into 50-100 unique platform-optimized variations."
+triggers:
+  - "create content"
+  - "generate posts"
+  - "repurpose"
+  - "content about"
+  - "/content"
+tools_allowed:
+  - content
+  - browser
+  - social
+  - filesystem
+risk_profile: 1
+author: "Forged Intelligence"
+signed: true

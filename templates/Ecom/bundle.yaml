@@ -1,0 +1,6 @@
+name: Ecom
+description: Store operations and campaign checks
+default_skills:
+  - daily-briefing
+  - safe-notes
+micro_win_message: "In the next 60 seconds: review one product issue, one marketing task, and one customer action to create a focused execution queue."

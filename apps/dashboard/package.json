@@ -1,0 +1,24 @@
+{
+  "name": "@forgeclaw/dashboard",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.json",
+    "dev": "tsx src/server.ts",
+    "test": "vitest run --passWithNoTests",
+    "lint": "echo 'no lint configured'",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "format": "echo 'no format configured'"
+  },
+  "dependencies": {
+    "@forgeclaw/core": "workspace:*",
+    "@forgeclaw/memory": "workspace:*",
+    "@forgeclaw/shared": "workspace:*",
+    "express": "^4.21.2",
+    "vite": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1"
+  }
+}

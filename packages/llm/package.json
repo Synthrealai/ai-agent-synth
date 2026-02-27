@@ -1,0 +1,17 @@
+{
+  "name": "@forgeclaw/llm",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run --passWithNoTests",
+    "lint": "echo 'no lint configured'",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@forgeclaw/shared": "workspace:*",
+    "openai": "^4.80.0"
+  }
+}

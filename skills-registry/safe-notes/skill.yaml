@@ -1,0 +1,9 @@
+name: safe-notes
+description: Structured note capture and retrieval
+triggers:
+  - note
+  - remember
+tools_allowed:
+  - filesystem
+  - human
+risk_profile: low

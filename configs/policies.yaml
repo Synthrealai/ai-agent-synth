@@ -1,0 +1,92 @@
+# ForgeClaw Policy Engine Configuration
+# Action types: allow, deny, warn, require_approval
+
+rules:
+  - id: deny-rm-rf
+    action: deny
+    tool_pattern: "shell"
+    arg_patterns:
+      command: "rm\\s+(-rf|-fr|--no-preserve-root)"
+    description: "Block recursive force delete"
+
+  - id: deny-system-paths
+    action: deny
+    tool_pattern: "filesystem"
+    arg_patterns:
+      path: "^(/etc|/usr|/bin|/sbin|/boot|/sys|/proc|\\.ssh)"
+    description: "Block access to system paths"
+
+  - id: deny-exfil
+    action: deny
+    tool_pattern: "http"
+    arg_patterns:
+      url: "(169\\.254\\.|metadata\\.google|100\\.100\\.100\\.200)"
+    description: "Block cloud metadata endpoints"
+
+  - id: deny-secret-read
+    action: deny
+    tool_pattern: "filesystem"
+    arg_patterns:
+      path: "(\\.env|\\.ssh|id_rsa|\\.gnupg|keychain)"
+    description: "Block reading secret files"
+
+  - id: approve-delete
+    action: require_approval
+    tool_pattern: "filesystem"
+    arg_patterns:
+      action: "delete"
+    description: "File deletion requires approval"
+
+  - id: approve-shell-install
+    action: require_approval
+    tool_pattern: "shell"
+    arg_patterns:
+      command: "(npm install|pip install|apt install|brew install)"
+    description: "Package installation requires approval"
+
+  - id: approve-social-post
+    action: require_approval
+    tool_pattern: "social"
+    arg_patterns:
+      action: "post"
+    description: "Social media posting requires approval"
+
+  - id: approve-payment
+    action: require_approval
+    tool_pattern: "stripe"
+    description: "All payment operations require approval"
+
+  - id: warn-large-request
+    action: warn
+    tool_pattern: "llm"
+    arg_patterns:
+      max_tokens: "^[5-9]\\d{4,}"
+    description: "Large token requests generate a warning"
+
+  - id: warn-outbound-http
+    action: warn
+    tool_pattern: "http"
+    description: "Outbound HTTP requests generate a warning"
+
+  - id: allow-filesystem-read
+    action: allow
+    tool_pattern: "filesystem"
+    arg_patterns:
+      action: "(read|list)"
+    description: "Reading files is always allowed"
+
+  - id: allow-memory
+    action: allow
+    tool_pattern: "memory"
+    description: "Memory operations are always allowed"
+
+  - id: allow-content-draft
+    action: allow
+    tool_pattern: "content"
+    arg_patterns:
+      action: "(draft|generate)"
+    description: "Content drafting is always allowed"
+
+risk_thresholds:
+  auto_approve_below: 2
+  always_require_above: 3

@@ -1,0 +1,25 @@
+enabled: true
+tick_seconds: 180
+max_open_tasks: 5
+max_tasks_seed_per_tick: 1
+roles:
+  - name: Scout
+    objective: "Find one concrete demand signal and turn it into an execution-ready opportunity."
+    task_templates:
+      - "Identify one high-intent problem worth solving this week and capture proof links."
+      - "Find one audience pain point and propose a high-leverage content angle with evidence."
+  - name: Builder
+    objective: "Ship one tangible asset in the workspace that can be used or sold."
+    task_templates:
+      - "Create one usable asset (script, template, landing draft, or workflow) tied to current opportunities."
+      - "Improve one existing asset for higher conversion or clarity and log exact changes."
+  - name: Publisher
+    objective: "Create one distribution artifact that drives traffic, trust, or leads."
+    task_templates:
+      - "Draft one high-value distribution artifact (thread/post/outreach) tied to shipped work."
+      - "Prepare one build-in-public update with concrete outcomes and CTA."
+  - name: Closer
+    objective: "Move one opportunity toward revenue with explicit next actions."
+    task_templates:
+      - "Create one revenue-focused follow-up plan for a live opportunity."
+      - "Draft one concise offer + CTA sequence for the highest-leverage lead."

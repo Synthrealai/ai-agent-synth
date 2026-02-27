@@ -1,0 +1,38 @@
+{
+  "name": "forgeclaw",
+  "version": "2.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.30.2",
+  "description": "FORGE — Autonomous AI Agent Operating System",
+  "author": "Nick Halve <nickhalve98@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "forge": "tsx apps/cli/src/index.ts",
+    "forge:telegram": "tsx apps/telegram/src/index.ts",
+    "forge:dashboard": "cd apps/dashboard && pnpm dev",
+    "forge:scheduler": "tsx apps/scheduler/src/index.ts",
+    "forge:all": "pm2 start ecosystem.config.cjs",
+    "db:migrate": "tsx packages/memory/src/migrate.ts",
+    "db:seed": "tsx packages/memory/src/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "@daytonaio/sdk": "^0.146.0",
+    "agent-browser": "^0.15.0",
+    "isolated-vm": "^6.0.2",
+    "linkedin-api": "^0.0.1",
+    "node-cron": "^4.2.1",
+    "twitter-api-v2": "^1.29.0"
+  }
+}

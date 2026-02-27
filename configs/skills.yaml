@@ -1,0 +1,6 @@
+registry:
+  type: local
+  path: ./skills
+signature:
+  required: true
+  public_key_path: ./configs/skills_public.pem
