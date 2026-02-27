@@ -1,17 +1,27 @@
 # OpenClaw/Gateway Health Check
 
-Date: 2026-02-26
+Date: 2026-02-27
 
 ## Findings
-- No `OpenClaw.app` binary was found via Spotlight search.
-- No active process matching `openclaw` or `gateway` is currently running on this machine.
-- No OpenClaw/gateway source files were found in `/Users/nick/Desktop/feb27Synthrella`.
-- Active local services are Forge:
+- Canonical runtime is now **AI AGENT SYNTH / Forge** at:
+  - `/Users/nick/Desktop/AI AGENT SYNTH/openclaw-synth`
+- Local services online:
   - Dashboard: `127.0.0.1:3000`
-  - Telegram worker: PM2 process online
+  - Telegram worker: PM2 online
+  - Scheduler: PM2 online
+- Scheduler now verifies real local file outputs before marking tasks complete.
+- Policy guardrails include:
+  - Apple Photos library access blocked by default
+  - Shell-triggered purchase/payment actions require approval
+- Legacy OpenClaw/synth clones and mission-control duplicates were removed or consolidated.
 
 ## Conclusion
-Current agent runtime is Forge, not an installed OpenClaw desktop/gateway stack. Any previous gateway mismatch issues are from prior config/session state, not from an active OpenClaw process in this runtime folder.
+The active local stack is a single consolidated Forge/OpenClaw-style runtime with L4 harness support and policy-gated approvals.
 
-## Recommended Next Action
-If you want a true OpenClaw gateway health check, provide the exact OpenClaw install path (or reinstall path), then run a targeted diagnostic against that binary and token config.
+## Next Diagnostic
+Use:
+```bash
+curl -s http://127.0.0.1:3000/api/health
+curl -s http://127.0.0.1:3000/api/tasks?limit=20
+pm2 list
+```

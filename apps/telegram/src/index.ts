@@ -71,6 +71,8 @@ Type /help for commands or just chat naturally.
 /code <description> — Generate code
 /approve — Show pending approvals
 /autonomy — Show autonomous loop status
+/phase — Show Phase 3/4 harness status
+/launch — Queue newborn launch sprint tasks
 /brief — Get daily briefing
 /memory <query> — Search memories
 /help — This message
@@ -178,6 +180,48 @@ ${timeline.map(e => `• ${e.type}: ${e.summary.slice(0, 60)}`).join('\n')}
       `✅ Task queued\nID: \`${task.id}\`\nGoal: ${task.goal}\nStatus: ${task.status}`,
       { parse_mode: 'Markdown' }
     );
+  });
+
+  bot.onText(/\/phase/, async (msg) => {
+    if (!isAuthorized({ chatId: msg.chat.id, userId: msg.from?.id })) return;
+    if (!consumeRateLimit({ chatId: msg.chat.id, userId: msg.from?.id })) return;
+
+    const mode = process.env.FORGE_AUTONOMY_LEVEL || 'L3';
+    const configPath = process.env.FORGE_AUTONOMY_CONFIG_PATH || 'configs/autonomy.yaml';
+    const status = [
+      'Phase Status',
+      '━━━━━━━━━━━━━━━',
+      'Mode: ' + mode,
+      'Config: ' + configPath,
+      'Harness: Phase 3/4 multi-track enabled when configured',
+    ].join('\n');
+
+    bot.sendMessage(msg.chat.id, status);
+  });
+
+  bot.onText(/\/launch/, async (msg) => {
+    if (!isAuthorized({ chatId: msg.chat.id, userId: msg.from?.id })) return;
+    if (!consumeRateLimit({ chatId: msg.chat.id, userId: msg.from?.id })) return;
+
+    const launchGoals = [
+      '[NewbornLaunch] Create social profile bio pack and pinned-thread draft for Synthor.',
+      '[NewbornLaunch] Build link hub page with live project feed and deployment checklist.',
+      '[NewbornLaunch] Define first 3 paid offers with pricing, CTA, and fulfillment SOP.',
+    ];
+
+    for (const goal of launchGoals) {
+      agent.getMemoryDB().createTask({
+        goal,
+        status: 'planning',
+        plan: [
+          'Create the requested deliverable in the workspace.',
+          'Validate output files exist.',
+          'Return concise summary with absolute output paths.',
+        ],
+      });
+    }
+
+    bot.sendMessage(msg.chat.id, 'Queued newborn launch tasks: ' + launchGoals.length);
   });
 
   bot.onText(/\/autonomy/, async (msg) => {

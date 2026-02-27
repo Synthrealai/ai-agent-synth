@@ -1,5 +1,3 @@
-const path = require('path');
-
 const ROOT = __dirname;
 
 module.exports = {
@@ -12,7 +10,8 @@ module.exports = {
       cwd: ROOT,
       env: {
         NODE_ENV: 'production',
-        FORGE_AUTONOMY_LEVEL: 'L3',
+        FORGE_AUTONOMY_LEVEL: 'L4',
+        FORGE_AUTONOMY_CONFIG_PATH: `${ROOT}/configs/autonomy.yaml`,
         FORGE_WORKSPACE_ROOT: ROOT,
       },
       autorestart: true,
@@ -26,7 +25,8 @@ module.exports = {
       cwd: ROOT,
       env: {
         NODE_ENV: 'production',
-        FORGE_AUTONOMY_LEVEL: 'L3',
+        FORGE_AUTONOMY_LEVEL: 'L4',
+        FORGE_AUTONOMY_CONFIG_PATH: `${ROOT}/configs/autonomy.yaml`,
         FORGE_WORKSPACE_ROOT: ROOT,
         FORGE_DASHBOARD_HOST: '127.0.0.1',
       },
@@ -41,7 +41,8 @@ module.exports = {
       cwd: ROOT,
       env: {
         NODE_ENV: 'production',
-        FORGE_AUTONOMY_LEVEL: 'L3',
+        FORGE_AUTONOMY_LEVEL: 'L4',
+        FORGE_AUTONOMY_CONFIG_PATH: `${ROOT}/configs/autonomy.yaml`,
         FORGE_WORKSPACE_ROOT: ROOT,
       },
       autorestart: true,

@@ -1,0 +1,8 @@
+name: newborn-launch
+version: "1.0.0"
+description: "Bootstraps a newborn public AI agent with identity, launch assets, and execution rails."
+triggers: ["newborn", "launch", "agent profile", "start from scratch"]
+tools_allowed: [filesystem, content, browser]
+risk_profile: 1
+author: "AI AGENT SYNTH"
+signed: false

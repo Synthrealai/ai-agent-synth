@@ -1,0 +1,8 @@
+name: business-ops
+version: "1.0.0"
+description: "Converts technical output into offers, SOPs, and execution plans."
+triggers: ["offer", "ops", "sop", "process", "delivery"]
+tools_allowed: [filesystem, content]
+risk_profile: 1
+author: "AI AGENT SYNTH"
+signed: false

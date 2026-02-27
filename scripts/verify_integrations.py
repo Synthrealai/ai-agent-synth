@@ -270,6 +270,39 @@ def main() -> None:
         )
     )
 
+    checks.append(
+        run_check(
+            "SUPABASE_ACCESS_TOKEN",
+            lambda: (False, "missing")
+            if not has_value("SUPABASE_ACCESS_TOKEN")
+            else (
+                lambda r: (r.status_code == 200, str(r.status_code))
+            )(
+                requests.get(
+                    "https://api.supabase.com/v1/projects",
+                    headers={"Authorization": f"Bearer {os.environ['SUPABASE_ACCESS_TOKEN']}"},
+                    timeout=15,
+                )
+            ),
+        )
+    )
+    checks.append(
+        run_check(
+            "GITHUB_TOKEN",
+            lambda: (False, "missing")
+            if not has_value("GITHUB_TOKEN")
+            else (
+                lambda r: (r.status_code == 200, str(r.status_code))
+            )(
+                requests.get(
+                    "https://api.github.com/user",
+                    headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"},
+                    timeout=15,
+                )
+            ),
+        )
+    )
+
     ok_count = sum(1 for _, ok, _ in checks if ok)
     print(f"VALID {ok_count}/{len(checks)}")
     for name, ok, detail in checks:

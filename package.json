@@ -18,7 +18,9 @@
     "forge:scheduler": "tsx apps/scheduler/src/index.ts",
     "forge:all": "pm2 start ecosystem.config.cjs",
     "db:migrate": "tsx packages/memory/src/migrate.ts",
-    "db:seed": "tsx packages/memory/src/seed.ts"
+    "db:seed": "tsx packages/memory/src/seed.ts",
+    "forge:bootstrap:newborn": "tsx scripts/bootstrap_newborn_agent.ts",
+    "forge:verify:integrations": "python3 scripts/verify_integrations.py"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -29,10 +31,12 @@
   },
   "dependencies": {
     "@daytonaio/sdk": "^0.146.0",
+    "@forgeclaw/memory": "workspace:*",
     "agent-browser": "^0.15.0",
     "isolated-vm": "^6.0.2",
     "linkedin-api": "^0.0.1",
     "node-cron": "^4.2.1",
-    "twitter-api-v2": "^1.29.0"
+    "twitter-api-v2": "^1.29.0",
+    "yaml": "^2.8.2"
   }
 }

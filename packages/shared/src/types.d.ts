@@ -3,7 +3,8 @@ export declare enum AutonomyLevel {
     L0_CHAT_ONLY = "L0",
     L1_TOOLS_WITH_APPROVAL = "L1",
     L2_AUTO_LOW_RISK = "L2",
-    L3_SCHEDULED_HEARTBEAT = "L3"
+    L3_SCHEDULED_HEARTBEAT = "L3",
+    L4_MULTI_TRACK_AUTONOMY = "L4"
 }
 export declare enum RiskLevel {
     NONE = 0,

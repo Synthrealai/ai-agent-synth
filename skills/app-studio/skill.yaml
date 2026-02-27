@@ -1,0 +1,8 @@
+name: app-studio
+version: "1.0.0"
+description: "Builds deploy-ready web/mobile app scaffolds with integration notes."
+triggers: ["saas", "web app", "ios", "mobile", "studio"]
+tools_allowed: [filesystem, shell, http]
+risk_profile: 2
+author: "AI AGENT SYNTH"
+signed: false

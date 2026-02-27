@@ -35,19 +35,24 @@
       +---------------+------------------+---------------------+
                       |
                       v
-               [timeline logging]
-
+              +------------------+
+              | L4 Harness Tracks |
+              | signal -> build   |
+              | launch -> revenue |
+              | integrations      |
+              +------------------+
 ```
 
 ## Key Properties
+- Local-first security: bind hosts default to `127.0.0.1`.
+- Policy gate: every tool call is scored and policy-checked before execution.
+- Approval queue: risky operations persist in SQLite and require explicit approval.
+- Deterministic logs: structured logs with redaction.
+- Artifact validation: scheduler fails tasks with fake/missing output paths.
 
-- **Local-first security:** all bind hosts default to `127.0.0.1`.
-- **Policy gate:** every tool call is scored and policy-checked before execution.
-- **Approval queue:** risky operations persist in SQLite and require explicit approval.
-- **Rollback journal:** filesystem mutations write inverse operations for rollback.
-- **Deterministic logs:** structured JSON logs with redaction.
-- **Autonomy levels:**
-  - `L0`: chat only
-  - `L1`: tools require approval for risky actions
-  - `L2`: low-risk auto-approved
-  - `L3`: heartbeat scheduler allowed (still policy-checked)
+## Autonomy Levels
+- `L0`: chat only
+- `L1`: tools with approvals
+- `L2`: low-risk auto-approved
+- `L3`: scheduled heartbeat + policy checks
+- `L4`: multi-track autonomy harness (signals, product factory, launch, revenue, integrations)

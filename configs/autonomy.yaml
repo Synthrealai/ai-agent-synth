@@ -1,8 +1,12 @@
 enabled: true
+phase: 4
 tick_seconds: 90
-max_open_tasks: 12
-max_tasks_seed_per_tick: 3
-max_tasks_run_per_tick: 3
+max_open_tasks: 16
+max_tasks_seed_per_tick: 4
+max_tasks_run_per_tick: 4
+harness_enabled: true
+harness_path: configs/harness.yaml
+enforce_file_outputs: true
 roles:
   - name: Scout
     objective: "Find one concrete demand signal and turn it into an execution-ready opportunity."

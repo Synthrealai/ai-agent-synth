@@ -14,10 +14,17 @@
 - Content generation
 - Social posting (approval-gated)
 - Video generation (approval-gated)
-- Human question escalation
+- Human escalation
+
+## Integration Targets
+- Codex / Claude Code collaborative coding loops
+- Supabase (db/auth/storage)
+- Vercel (deploy/preview)
+- GitHub (repo + issue ops)
+- cURL-first API verification
 
 ## Enforcement
 - Policy engine: `configs/policies.yaml`
 - Approval queue persisted in SQLite
 - Risk scoring applied before tool execution
-- Deletes/installs/posting require explicit approval
+- Deletes/installs/posting/payments/deploys require explicit approval

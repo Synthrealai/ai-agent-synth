@@ -30,6 +30,13 @@ rules:
       path: "(\\.env|\\.ssh|id_rsa|\\.gnupg|keychain)"
     description: "Block reading secret files"
 
+  - id: deny-apple-photos-library
+    action: deny
+    tool_pattern: "filesystem"
+    arg_patterns:
+      path: "(/Users/nick/Pictures/Photos Library\\.photoslibrary|/Users/nick/Pictures/Photos Library)"
+    description: "Block access to Apple Photos library by default"
+
   - id: approve-delete
     action: require_approval
     tool_pattern: "filesystem"
@@ -41,20 +48,41 @@ rules:
     action: require_approval
     tool_pattern: "shell"
     arg_patterns:
-      command: "(npm install|pip install|apt install|brew install)"
+      command: "(npm install|pnpm add|pip install|apt install|brew install)"
     description: "Package installation requires approval"
+
+  - id: approve-shell-deploy
+    action: require_approval
+    tool_pattern: "shell"
+    arg_patterns:
+      command: "(vercel\\s+deploy|supabase\\s+db\\s+push|gh\\s+repo\\s+create|gh\\s+release\\s+create|firebase\\s+deploy)"
+    description: "External deploy/publish operations require approval"
+
+  - id: approve-shell-publish
+    action: require_approval
+    tool_pattern: "shell"
+    arg_patterns:
+      command: "(npm publish|pnpm publish|cargo publish|twine upload)"
+    description: "Package publishing requires approval"
 
   - id: approve-social-post
     action: require_approval
     tool_pattern: "social"
     arg_patterns:
-      action: "post"
+      action: "post|thread|reply"
     description: "Social media posting requires approval"
 
   - id: approve-payment
     action: require_approval
     tool_pattern: "stripe"
     description: "All payment operations require approval"
+
+  - id: approve-shell-purchase-actions
+    action: require_approval
+    tool_pattern: "shell"
+    arg_patterns:
+      command: "(checkout|purchase|buy\\s|pay\\s|send\\s+money|wire\\s+transfer|bank\\s+transfer|venmo|cashapp|paypal|square\\s+charge|stripe\\s+charges)"
+    description: "Any shell-triggered purchase or payment action requires approval"
 
   - id: warn-large-request
     action: warn
@@ -72,7 +100,7 @@ rules:
     action: allow
     tool_pattern: "filesystem"
     arg_patterns:
-      action: "(read|list)"
+      action: "(read|list|exists|stat)"
     description: "Reading files is always allowed"
 
   - id: allow-memory
@@ -84,7 +112,7 @@ rules:
     action: allow
     tool_pattern: "content"
     arg_patterns:
-      action: "(draft|generate)"
+      action: "(draft|generate|extract_atoms|generate_variations|format_for_platform|create_thread)"
     description: "Content drafting is always allowed"
 
 risk_thresholds:

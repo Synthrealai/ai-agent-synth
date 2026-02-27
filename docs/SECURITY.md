@@ -22,3 +22,4 @@
 - L1: Tools with approval for ALL actions
 - L2: Auto-approve low-risk, require approval for medium+high (DEFAULT)
 - L3: Scheduled heartbeat enabled, background tasks (still policy-checked)
+- L4: Multi-track harness execution with mandatory artifact validation (still approval-gated)

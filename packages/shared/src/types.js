@@ -6,6 +6,7 @@ export var AutonomyLevel;
     AutonomyLevel["L1_TOOLS_WITH_APPROVAL"] = "L1";
     AutonomyLevel["L2_AUTO_LOW_RISK"] = "L2";
     AutonomyLevel["L3_SCHEDULED_HEARTBEAT"] = "L3";
+    AutonomyLevel["L4_MULTI_TRACK_AUTONOMY"] = "L4";
 })(AutonomyLevel || (AutonomyLevel = {}));
 // ── Risk Levels ──
 export var RiskLevel;
@@ -18,7 +19,7 @@ export var RiskLevel;
 })(RiskLevel || (RiskLevel = {}));
 // ── Config Schema ──
 export const ForgeConfigSchema = z.object({
-    autonomy_level: z.nativeEnum(AutonomyLevel).default(AutonomyLevel.L2_AUTO_LOW_RISK),
+    autonomy_level: z.nativeEnum(AutonomyLevel).default(AutonomyLevel.L3_SCHEDULED_HEARTBEAT),
     max_cost_per_day: z.number().default(25),
     default_model: z.string().default('anthropic/claude-sonnet-4-20250514'),
     reasoning_model: z.string().default('anthropic/claude-opus-4-0-20250115'),

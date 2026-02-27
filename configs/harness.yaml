@@ -1,0 +1,57 @@
+name: AI AGENT SYNTH L4 Harness
+phase: 4
+tracks:
+  - name: SignalOps
+    objective: Turn live market demand into executable opportunities every cycle.
+    required_skills:
+      - web-researcher
+      - lead-tracker
+      - growth-swarm
+    output_dir: data/pipeline/signals
+    task_templates:
+      - "Research one monetizable pain-point and save a source-backed brief in data/pipeline/signals/."
+      - "Find one repeat buyer segment and write a validated offer hypothesis with links and evidence."
+
+  - name: ProductFactory
+    objective: Ship software assets and tools that can be sold or deployed this week.
+    required_skills:
+      - product-factory
+      - code-builder
+      - app-studio
+    output_dir: data/pipeline/products
+    task_templates:
+      - "Build one shippable micro-product and include setup, test, and deploy instructions."
+      - "Create one automation script or API utility that saves at least 1 hour/day and document usage."
+
+  - name: LaunchEngine
+    objective: Publish high-conviction distribution artifacts tied to shipped outputs.
+    required_skills:
+      - content-engine
+      - growth-swarm
+      - social-poster
+    output_dir: data/pipeline/launch
+    task_templates:
+      - "Draft one launch thread + one LinkedIn post with CTA and tracking hooks."
+      - "Create one build-in-public update with proof artifacts and a concrete call-to-action."
+
+  - name: RevenueOps
+    objective: Convert opportunities into booked calls, paid pilots, or subscriptions.
+    required_skills:
+      - revenue-ops
+      - business-ops
+      - lead-tracker
+    output_dir: data/pipeline/revenue
+    task_templates:
+      - "Generate one outbound offer packet with pricing, scope, and next-step CTA."
+      - "Produce one follow-up sequence for highest-intent lead and log execution checklist."
+
+  - name: Integrations
+    objective: Expand capabilities with reliable integrations and reusable command flows.
+    required_skills:
+      - app-studio
+      - code-builder
+      - business-ops
+    output_dir: data/pipeline/integrations
+    task_templates:
+      - "Implement one integration playbook using Supabase/Vercel/GitHub CLI and include curl verification."
+      - "Create one reusable command runbook for Codex + Claude Code collaborative execution."

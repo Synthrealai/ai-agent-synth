@@ -1,0 +1,8 @@
+name: code-builder
+version: "1.0.0"
+description: "Builds scripts/apps with runnable commands, tests, and output paths."
+triggers: ["build", "code", "script", "app", "tool"]
+tools_allowed: [filesystem, shell, http]
+risk_profile: 2
+author: "AI AGENT SYNTH"
+signed: false

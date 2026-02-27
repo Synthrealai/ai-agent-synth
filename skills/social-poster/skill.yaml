@@ -1,0 +1,8 @@
+name: social-poster
+version: "1.0.0"
+description: "Creates and queues distribution artifacts for X and LinkedIn."
+triggers: ["tweet", "thread", "linkedin", "distribution", "launch post"]
+tools_allowed: [content, social, filesystem]
+risk_profile: 3
+author: "AI AGENT SYNTH"
+signed: false

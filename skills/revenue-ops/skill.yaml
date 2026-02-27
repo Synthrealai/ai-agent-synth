@@ -1,0 +1,8 @@
+name: revenue-ops
+version: "1.0.0"
+description: "Designs lead conversion and follow-up systems tied to shipped artifacts."
+triggers: ["revenue", "sales", "close", "follow-up", "pricing"]
+tools_allowed: [filesystem, content]
+risk_profile: 1
+author: "AI AGENT SYNTH"
+signed: false

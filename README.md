@@ -1,47 +1,46 @@
-# FORGECLAW v2.0.0
+# FORGECLAW v2.1.0 (AI AGENT SYNTH)
 
-FORGE is an autonomous multi-tool AI operating system for content, coding, research, and business ops.
+FORGE is an autonomous multi-tool AI operating runtime for research, coding, distribution, and revenue operations.
+
+## Canonical Root
+`/Users/nick/Desktop/AI AGENT SYNTH/openclaw-synth`
 
 ## Quick Start
 
 ```bash
-cd /Users/nick/SynthClawunch/forgeclaw
+cd "/Users/nick/Desktop/AI AGENT SYNTH/openclaw-synth"
 pnpm install
 pnpm run db:migrate
-pnpm run forge
+pnpm run forge:bootstrap:newborn
+pm2 start ecosystem.config.cjs
+pm2 save
 ```
 
-## Telegram
+## Runtime Apps
 
 ```bash
-pnpm run forge:telegram
+pnpm run forge            # CLI
+pnpm run forge:telegram   # Telegram bot
+pnpm run forge:dashboard  # Local dashboard
+pnpm run forge:scheduler  # Autonomy scheduler
 ```
 
-Required env vars:
-- `TELEGRAM_BOT_TOKEN`
-- `TELEGRAM_OWNER_ID`
-
-## Dashboard
+## Health Checks
 
 ```bash
-pnpm run forge:dashboard
+curl -s http://127.0.0.1:3000/api/health
+curl -s http://127.0.0.1:3000/api/tasks?limit=20
+pm2 list
 ```
 
-## PM2 Runtime
-
-```bash
-pnpm run forge:all
-pm2 logs forge-telegram
-```
-
-## Tests
-
-```bash
-pnpm test
-```
+## Phase 3/4 Harness
+- Autonomy config: `configs/autonomy.yaml`
+- Track harness: `configs/harness.yaml`
+- Skill graph: `configs/skill-graph.yaml`
+- Newborn memory: `memory/newborn/`
 
 ## Security
-
 - Keep secrets only in `~/.forgeclaw/.env` and never commit them.
-- Default deployment binds dashboard on localhost.
-- High-risk actions are policy-gated via approvals.
+- Dashboard binds to localhost.
+- High-risk actions are policy-gated and approval-backed.
+- Tasks are expected to produce verifiable output files.

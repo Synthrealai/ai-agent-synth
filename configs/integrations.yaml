@@ -1,0 +1,35 @@
+providers:
+  github:
+    enabled_if_env:
+      - GITHUB_TOKEN
+    checks:
+      - "gh auth status"
+      - "gh repo view"
+  vercel:
+    enabled_if_env:
+      - VERCEL_TOKEN
+    checks:
+      - "npx vercel whoami"
+  supabase:
+    enabled_if_env:
+      - SUPABASE_ACCESS_TOKEN
+      - SUPABASE_PROJECT_REF
+    checks:
+      - "supabase --version"
+      - "supabase projects list"
+  codex:
+    enabled_if_env: []
+    checks:
+      - "codex --help"
+  claude_code:
+    enabled_if_env: []
+    checks:
+      - "claude --help"
+
+curl_recipes:
+  health:
+    command: "curl -sS http://127.0.0.1:3000/api/health"
+  tasks:
+    command: "curl -sS http://127.0.0.1:3000/api/tasks?limit=20"
+  approvals:
+    command: "curl -sS http://127.0.0.1:3000/api/approvals?limit=20"

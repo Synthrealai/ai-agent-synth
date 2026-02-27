@@ -1,0 +1,8 @@
+name: growth-swarm
+version: "1.0.0"
+description: "Creates repeatable growth loops across content, social, and community touchpoints."
+triggers: ["growth", "distribution", "audience", "community", "reach"]
+tools_allowed: [browser, content, filesystem]
+risk_profile: 1
+author: "AI AGENT SYNTH"
+signed: false

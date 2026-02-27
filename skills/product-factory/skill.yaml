@@ -1,0 +1,8 @@
+name: product-factory
+version: "1.0.0"
+description: "Runs build-in-public product cycles from signal to shipped MVP."
+triggers: ["factory", "mvp", "product", "ship fast", "micro-saas"]
+tools_allowed: [filesystem, shell, browser, content]
+risk_profile: 2
+author: "AI AGENT SYNTH"
+signed: false

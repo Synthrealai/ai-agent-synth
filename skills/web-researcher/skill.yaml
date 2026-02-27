@@ -1,0 +1,8 @@
+name: web-researcher
+version: "1.0.0"
+description: "Finds current demand signals with source links and turns them into actionable briefs."
+triggers: ["research", "signal", "market", "proof links", "scout"]
+tools_allowed: [browser, filesystem, content]
+risk_profile: 1
+author: "AI AGENT SYNTH"
+signed: false

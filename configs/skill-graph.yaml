@@ -1,0 +1,58 @@
+version: 1
+root: newborn-launch
+nodes:
+  - id: newborn-launch
+    label: Newborn Launch
+    type: orchestration
+    triggers: ["launch", "newborn", "agent setup", "phase 4"]
+    outputs:
+      - memory/newborn/01_IDENTITY.md
+      - memory/newborn/02_MISSION.md
+      - memory/newborn/03_OFFER_STACK.md
+      - memory/newborn/04_SKILL_GRAPH.md
+
+  - id: product-factory
+    label: Product Factory
+    type: build
+    depends_on: [signal-ops]
+    outputs:
+      - data/pipeline/products/
+
+  - id: signal-ops
+    label: Signal Ops
+    type: research
+    outputs:
+      - data/pipeline/signals/
+
+  - id: growth-swarm
+    label: Growth Swarm
+    type: distribution
+    depends_on: [product-factory]
+    outputs:
+      - data/pipeline/launch/
+
+  - id: revenue-ops
+    label: Revenue Ops
+    type: monetization
+    depends_on: [growth-swarm]
+    outputs:
+      - data/pipeline/revenue/
+
+  - id: app-studio
+    label: App Studio
+    type: engineering
+    depends_on: [product-factory]
+    outputs:
+      - data/pipeline/apps/
+
+edges:
+  - from: newborn-launch
+    to: signal-ops
+  - from: signal-ops
+    to: product-factory
+  - from: product-factory
+    to: growth-swarm
+  - from: growth-swarm
+    to: revenue-ops
+  - from: product-factory
+    to: app-studio

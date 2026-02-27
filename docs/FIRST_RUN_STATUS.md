@@ -1,41 +1,30 @@
 # FORGE First-Run Status
 
-Date: 2026-02-26  
-Runtime root: `/Users/nick/Desktop/feb27Synthrella`
+Date: 2026-02-27  
+Runtime root: `/Users/nick/Desktop/AI AGENT SYNTH/openclaw-synth`
 
-## Section 11 Checklist
-- [x] 1. Install tools from Section 1A (with corrected package names: `agent-browser`, `@daytonaio/sdk`)
-- [x] 2. Verify API keys from Section 1C
-- [ ] 3. Read Google Doc #1 (blocked by auth)
-- [ ] 4. Read Google Doc #5 (blocked by auth)
-- [ ] 5. Read all remaining Google Docs (blocked by auth)
-- [x] 6. Build Empire Map and store base memory
-- [x] 7. Get today's weather (Minneapolis)
-- [x] 8. Scan top AI news sources
-- [x] 9. Generate first morning briefing
-- [x] 10. Generate 3 draft tweets
-- [x] 11. Identify top 3 immediate revenue opportunities
-- [x] 12. Produce operational status report
+## Phase State
+- Autonomy mode: `L4`
+- Scheduler: online (`forge-scheduler`)
+- Harness: loaded from `configs/harness.yaml`
+- Skill graph: loaded from `configs/skill-graph.yaml`
 
-## Setup + Health Summary
-- Tools installed: `17/17` requested packages installed
-- API keys verified: `9/14` valid
-- Docs read: `0/20` (`401` on all listed Google Docs export URLs)
-- Memories stored: `5` base identity/business memories
-- Empire Map: `Built` (`docs/NICKS_EMPIRE_MAP.md`)
-
-## API Validation Results
-- ✅ Valid: ANTHROPIC, OPENAI, OPENROUTER, GROQ, GEMINI, ELEVENLABS, REPLICATE, STRIPE, VERCEL
-- ⚠️ Needs refresh/config: HEYGEN (401), TWITTER (403), YOUTUBE (403), BEEHIIV (401), N8N API endpoint (404)
-
-## Immediate Revenue Opportunities
-1. Package and sell a local-business automation pilot offer (fast close path)
-2. Ship ContentForge paid beta with one concrete transformation workflow
-3. Productize recurring content pipeline (daily drafts + approval + posting schedule)
+## Bootstrap Status
+- Newborn memory seeded: `memory/newborn/*`
+- Pipeline dirs seeded: `data/pipeline/{signals,products,launch,revenue,integrations,apps}`
+- Launch tasks queued: yes
 
 ## Runtime Notes
-- PM2 services are live from this folder:
+- PM2 services:
   - `forge-telegram`
   - `forge-dashboard`
+  - `forge-scheduler`
 - `.env` is linked to `/Users/nick/.forgeclaw/.env`
-- `SOUL.md` and `SKILLS.md` are present and updated in this root.
+- Default scheduler model route updated from `openrouter/free` to `groq/llama-3.3-70b-versatile` for higher tool-call reliability.
+- Scheduler output gate now requires a real `OUTPUT_PATHS` block with fresh workspace file artifacts.
+- Approval gates remain active for risky actions.
+
+## Integration Verification Snapshot
+- `pnpm run forge:verify:integrations` result: `VALID 9/16`
+- Passing: Anthropic/OpenAI/OpenRouter/Groq/Gemini/ElevenLabs/Replicate/Stripe/Vercel
+- Failing or missing: HeyGen, Twitter, YouTube, n8n, Beehiiv, Supabase token, GitHub token
